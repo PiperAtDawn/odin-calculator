@@ -1,1 +1,89 @@
+* {
+    box-sizing: border-box;
+}
 
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: aliceblue;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 2em;
+    margin: 0;
+}
+
+#calc {
+    width: 500px;
+    height: 700px;
+    display: grid;
+    gap: 5px;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    background-color: lightgray;
+    padding: 20px;
+    border-color: black;
+    border-style: solid;
+    border-radius: 10px;
+}
+
+.button, #display {
+    border-style: none;
+    border-radius: 5px;
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+}
+
+.button:hover {
+    cursor: pointer;
+    border-style: solid;
+    border-color: black;
+}
+
+#display {
+    grid-column: 1 / 5;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 15px 10px 10px 10px;
+    margin-bottom: 10px;
+    justify-content: space-between;
+}
+
+#display > p {
+    margin: 0;
+}
+
+#display-history {
+    font-size: 0.6em;
+}
+
+.wide {
+    grid-column: 2 / 4;
+}
+
+.tall {
+    grid-row: 5 / 7;
+    grid-column: 4;
+}
+
+#display {
+    background-color: white;
+}
+
+.number, #dot {
+    background-color: rgb(168, 231, 231);
+}
+
+.operator, #equals {
+    background-color:bisque;
+}
+
+#erase, #clear {
+    background-color: cornflowerblue;
+}
