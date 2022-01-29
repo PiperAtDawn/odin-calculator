@@ -67,9 +67,8 @@ body {
     grid-column: 2 / 4;
 }
 
-.tall {
-    grid-row: 5 / 7;
-    grid-column: 4;
+#plus-minus {
+    background-color: rgb(228, 223, 152);
 }
 
 #display {

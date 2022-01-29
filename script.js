@@ -6,6 +6,7 @@ const operators = document.querySelectorAll(".operator");
 const erase = document.querySelector("#erase");
 const clear = document.querySelector("#clear");
 const equals = document.querySelector("#equals");
+const plusMinus = document.querySelector("#plus-minus");
 
 const add = () => (+values[0] + +values[1]).toString();
 const subtract = () => (+values[0] - +values[1]).toString();
@@ -18,7 +19,10 @@ let result = "";
 let activeValue = 0;
 
 const setActiveValue = (str, concat = false) => {
-    if (concat) values[activeValue] += str;
+    if (concat) {
+        if (values[activeValue] === "0") values[activeValue] = "";
+        values[activeValue] += str;
+    }
     else values[activeValue] = str;
     display.textContent = values[activeValue];
 };
@@ -92,8 +96,16 @@ dot.addEventListener("click", () => {
     }
     if (display.textContent.includes(".")) return;
     if (result && !operator) eraseAll();
-    if (!values[activeValue]) setActiveValue("0.");
+    if (!values[activeValue] || values[activeValue] === "0") setActiveValue("0.");
     else setActiveValue(".", true);
+});
+
+plusMinus.addEventListener("click", () => {
+    if (operator && !values[1]) setActiveValue("0");
+    else {
+        if (+values[activeValue] > 0) setActiveValue("-" + values[activeValue]);
+        else if (+values[activeValue] < 0) setActiveValue(values[activeValue].substring(1));
+    }
 });
 
 clear.addEventListener("click", eraseAll);
